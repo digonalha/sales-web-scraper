@@ -1,0 +1,11 @@
+__pycache__
+*.exe
+*.log
+.vscode
+.coverage
+.pytest_cache
+app.egg-info
+venv
+.idea
+.env
+db
