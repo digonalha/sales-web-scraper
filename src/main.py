@@ -16,8 +16,6 @@ def main():
     boletando = BoletandoWebscraper()
 
     try:
-        # ping_database()
-
         gatry.scrape_sales()
         boletando.scrape_sales()
                 
