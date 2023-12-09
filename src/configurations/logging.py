@@ -7,7 +7,9 @@ def config_logging():
     root = logging.getLogger()
     handler = logging.StreamHandler()
 
-    log_level = logging.DEBUG if getenv("ENVIRONMENT").upper() == "DEV" else logging.INFO
+    environment = getenv("ENVIRONMENT", "DEV")
+
+    log_level = logging.DEBUG if environment.upper() == "DEV" else logging.INFO
 
     handler.setLevel(log_level)
     root.setLevel(log_level) 

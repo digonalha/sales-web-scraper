@@ -1,14 +1,17 @@
-from app.http_clients.sale_client import SaleClient
+from injector import inject
 from app.utils.string_helpers import str_to_float, sanitize_text
-from app.webscraper.webscraper_base import WebscraperBase
-from app.dtos.sale_dto import Sale
+from app.services.scraper.scraper_base import ScraperBase
+from app.services.cache.redis_service import RedisService
+from app.dtos.sale_dto import SaleDto
 import logging
 
 logger = logging.getLogger(__name__)
 
-class GatryWebscraper(WebscraperBase):
-    def __init__(self):
+class GatryService(ScraperBase):
+    @inject
+    def __init__(self, redis_service: RedisService):
         self.url = "https://gatry.com"
+        self.redis_service = redis_service
 
     def scrape_sales(self):
         logger.info("web scraping page: %s", self.url)
@@ -26,7 +29,9 @@ class GatryWebscraper(WebscraperBase):
 
             description = ""#self.scrape_description_if_exists(tag)
 
-            sale = Sale(url=url, product_name=product_name, product_price=product_price, description=description)
+            sale = SaleDto(url=url, product_name=product_name, product_price=product_price, description=description)
+
+            self.redis_service.set_cache(sale.url, sale.url)
         
         logging.info("added a total of %s sales from %s", total, self.url)
 
