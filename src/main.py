@@ -1,5 +1,5 @@
 from injector import Injector
-from app.crosscutting.inject import RedisModule
+from app.crosscutting.inject import RabbitMQModule, RedisModule
 from app.utils.stopwatch import Stopwatch
 from app.services.scraper.boletando_service import BoletandoService
 from app.services.scraper.gatry_service import GatryService
@@ -14,7 +14,7 @@ config_logging()
 def main():
     stopwatch.start()
 
-    injector = Injector((RedisModule()))
+    injector = Injector((RedisModule(), RabbitMQModule()))
 
     boletando_service = injector.get(BoletandoService)
     gatry_service = injector.get(GatryService)

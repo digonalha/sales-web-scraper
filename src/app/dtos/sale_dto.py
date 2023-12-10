@@ -1,4 +1,4 @@
-from dataclasses import dataclass
+from dataclasses import dataclass, asdict
 
 @dataclass
 class SaleDto:
@@ -6,4 +6,6 @@ class SaleDto:
     product_name: str
     product_price: float
     description: str = None
-    status: int = 0
+
+    def as_dict(self):
+        return {k: str(v) for k, v in asdict(self).items()}

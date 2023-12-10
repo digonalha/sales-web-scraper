@@ -1,7 +1,7 @@
 from os import getenv
 import redis
 
-class RedisService:
+class RedisService:    
     def __init__(self):
         host = getenv("REDIS_HOST", "localhost")
         port = getenv("REDIS_PORT", "6379")
@@ -12,6 +12,7 @@ class RedisService:
 
     def set_cache(self, key, value):
         self.redis_client.set(key, value)
+        self.redis_client.expire(key, 1728 * 100)
 
     def get_cache(self, key):
         return self.redis_client.get(key)
