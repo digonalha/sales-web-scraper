@@ -1,4 +1,4 @@
-name: Build Validation - Test Application
+name: Build Validation - Lint and Test
 
 on:
   pull_request:
