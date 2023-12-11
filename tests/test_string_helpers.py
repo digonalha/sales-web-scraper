@@ -8,6 +8,7 @@ from src.app.utils.string_helpers import str_to_float, sanitize_text
     ("abc", 0)
 ])
 def test_str_to_float(text, expected):
+    #Assert
     assert str_to_float(text) == expected
 
 @pytest.mark.parametrize("text, expected", [
@@ -16,4 +17,5 @@ def test_str_to_float(text, expected):
     ("   Trim spaces   ", "Trim spaces")
 ])
 def test_sanitize_text(text, expected):
+    #Assert
     assert sanitize_text(text) == expected
