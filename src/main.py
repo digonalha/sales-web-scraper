@@ -1,9 +1,9 @@
+import logging
 from app.crosscutting.dependency_injector import DependencyInjector
 from app.utils.stopwatch import Stopwatch
 from app.services.scraper.boletando_service import BoletandoService
 from app.services.scraper.gatry_service import GatryService
 from configurations.logging import config_logging
-import logging
 
 logger = logging.getLogger(__name__)
 stopwatch = Stopwatch()

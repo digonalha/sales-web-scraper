@@ -1,11 +1,11 @@
 import json
+import logging
 from injector import inject
 from app.services.messaging.rabbitmq_service import RabbitMQService
 from app.utils.string_helpers import str_to_float, sanitize_text
 from app.services.scraper.scraper_base import ScraperBase
 from app.services.cache.redis_service import RedisService
 from app.dtos.sale_dto import SaleDto
-import logging
 
 logger = logging.getLogger(__name__)
 

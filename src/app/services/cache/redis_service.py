@@ -1,5 +1,3 @@
-from os import getenv
-import redis
 import redis
 from os import getenv
 

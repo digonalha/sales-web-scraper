@@ -1,6 +1,6 @@
+import pika
 import logging
 from os import getenv
-import pika
 
 logger = logging.getLogger(__name__)
 

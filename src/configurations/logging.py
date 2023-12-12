@@ -1,5 +1,5 @@
-from os import getenv
 import logging
+from os import getenv
 
 from configurations.log_formatter import CustomFormatter
 
