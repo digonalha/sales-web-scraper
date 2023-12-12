@@ -8,10 +8,10 @@ class RedisService:
         self.database = getenv("REDIS_DATABASE", "0")
 
     def set_cache(self, key, value):
-        with redis.Redis(host=self.host, port=self.port, db=self.database) as redis_client:
-            redis_client.set(key, value)
-            redis_client.expire(key, 1728 * 100)
+        with redis.Redis(host=self.host, port=self.port, db=self.database) as client:
+            client.set(key, value)
+            client.expire(key, 1728 * 100)
 
     def get_cache(self, key):
-        with redis.Redis(host=self.host, port=self.port, db=self.database) as redis_client:
-            return redis_client.get(key)
+        with redis.Redis(host=self.host, port=self.port, db=self.database) as client:
+            return client.get(key)
