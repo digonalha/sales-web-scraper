@@ -1,17 +1,18 @@
+import logging
+from bs4 import BeautifulSoup
 from selenium import webdriver
 from selenium.webdriver.firefox.service import Service
 from selenium.webdriver.firefox.options import Options
-from bs4 import BeautifulSoup
-import logging
 
 logger = logging.getLogger(__name__)
 
-class WebscraperBase:
+class ScraperBase:
     def start_driver(self):
         service = Service("./geckodriver.exe")
         options = Options()
+
+        options.add_argument("--headless")
         options.binary_location = r"C:\Program Files\Mozilla Firefox\firefox.exe"
-        options.headless = True
 
         self.driver = webdriver.Firefox(service=service, options=options)
 
