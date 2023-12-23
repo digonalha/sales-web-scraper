@@ -4,6 +4,8 @@ from os import getenv
 from configurations.log_formatter import CustomFormatter
 
 def config_logging():
+    supress_logs()
+
     root = logging.getLogger()
     handler = logging.StreamHandler()
 
@@ -16,3 +18,6 @@ def config_logging():
     
     handler.setFormatter(CustomFormatter())
     root.addHandler(handler)
+
+def supress_logs():
+    logging.getLogger("pika").setLevel(logging.WARNING)
