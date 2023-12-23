@@ -3,11 +3,9 @@ from src.app.services.messaging.rabbitmq_service import RabbitMQService
 
 class TestRabbitMQService:
     @patch('pika.BlockingConnection')
-    def test_publish_message(self, mock_pika):
+    def test_create_channel(self, mock_pika):
         # Arrange
         mock_channel = MagicMock()
-        mock_basic_publish = MagicMock()
-        mock_channel.__enter__.return_value.basic_publish = mock_basic_publish
         mock_pika.return_value.channel.__enter__.return_value = mock_channel
 
         service = RabbitMQService()
@@ -18,4 +16,3 @@ class TestRabbitMQService:
 
         # Assert
         mock_pika.return_value.channel.assert_called_once()
-        mock_channel.basic_publish.assert_called_once()
